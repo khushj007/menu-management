@@ -1,7 +1,6 @@
 import asyncHandler from "../utils/asyncHandler";
 import ApiResponse from "../utils/apiResponse";
 import prisma from "../prismaClient/prismaClient";
-import imageurl from "../utils/imageurl";
 
 interface Params {
   value?: string;
@@ -187,6 +186,7 @@ const updateItem = asyncHandler(async (req, res) => {
           : old_data?.totalAmount,
       },
     });
+
     response.message(true, "item updated", 200, data);
   } else if (old_name) {
     const old_data = await prisma.item.findUnique({
@@ -245,6 +245,7 @@ const createItem = asyncHandler(async (req, res) => {
         id: categoryid,
       },
     });
+
     const sub_category = await prisma.subCategory.findUnique({
       where: {
         id: subcategoryid,

@@ -8,10 +8,18 @@ interface Body {
   discount?: string;
   categoryid?: string;
   subcategoryid?: string;
+  baseAmount?: string;
 }
 async function Dataconversion(req: Request, res: Response, next: NextFunction) {
-  let { id, taxApplicable, tax, discount, categoryid, subcategoryid }: Body =
-    req.body;
+  let {
+    id,
+    taxApplicable,
+    tax,
+    discount,
+    categoryid,
+    subcategoryid,
+    baseAmount,
+  }: Body = req.body;
   if (id) {
     req.body.id = isNaN(parseInt(id)) ? null : parseInt(id);
   }
@@ -26,6 +34,11 @@ async function Dataconversion(req: Request, res: Response, next: NextFunction) {
   if (discount) {
     req.body.discount = isNaN(parseInt(discount)) ? null : parseInt(discount);
   }
+  if (baseAmount) {
+    req.body.baseAmount = isNaN(parseInt(baseAmount))
+      ? null
+      : parseInt(baseAmount);
+  }
 
   if (categoryid) {
     req.body.categoryid = isNaN(parseInt(categoryid))
@@ -34,7 +47,7 @@ async function Dataconversion(req: Request, res: Response, next: NextFunction) {
   }
 
   if (subcategoryid) {
-    req.body.categoryid = isNaN(parseInt(subcategoryid))
+    req.body.subcategoryid = isNaN(parseInt(subcategoryid))
       ? null
       : parseInt(subcategoryid);
   }

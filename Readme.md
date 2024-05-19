@@ -1,6 +1,6 @@
 ## Overview
 
-This project is a Node.js backend server for menu management. The menu is divided into three parts in the following order:
+This project is a backend server for menu management. The menu is divided into three parts in the following order:
 
 1. **Category**
 2. **Subcategory**: A category can have multiple subcategories.

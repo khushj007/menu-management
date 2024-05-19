@@ -1,7 +1,6 @@
 import asyncHandler from "../utils/asyncHandler";
 import ApiResponse from "../utils/apiResponse";
 import prisma from "../prismaClient/prismaClient";
-import imageurl from "../utils/imageurl";
 
 interface Params {
   value?: string;
