@@ -16,12 +16,14 @@ interface Body {
   taxType?: string;
 }
 
+// get all category
 const getAllCategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   const data = await prisma.category.findMany();
   response.message(true, "success", 200, data);
 });
 
+// get unique category
 const getCategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   let { value }: Params = req.params;
@@ -165,6 +167,7 @@ const createCategory = asyncHandler(async (req, res) => {
   }
 });
 
+// delete category
 const deleteCategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   let { value }: Params = req.params;

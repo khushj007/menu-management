@@ -16,12 +16,14 @@ exports.deleteCategory = exports.createCategory = exports.updateCategory = expor
 const asyncHandler_1 = __importDefault(require("../utils/asyncHandler"));
 const apiResponse_1 = __importDefault(require("../utils/apiResponse"));
 const prismaClient_1 = __importDefault(require("../prismaClient/prismaClient"));
+// get all category
 const getAllCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const data = yield prismaClient_1.default.category.findMany();
     response.message(true, "success", 200, data);
 }));
 exports.getAllCategory = getAllCategory;
+// get unique category
 const getCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     let { value } = req.params;
@@ -146,6 +148,7 @@ const createCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 
     }
 }));
 exports.createCategory = createCategory;
+// delete category
 const deleteCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     let { value } = req.params;

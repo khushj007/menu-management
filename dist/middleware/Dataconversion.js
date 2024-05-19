@@ -17,6 +17,7 @@ function Dataconversion(req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         var _a;
         let { id, taxApplicable, tax, discount, categoryid, subcategoryid, baseAmount, } = req.body;
+        // converting the data into form described in database schema
         if (id) {
             req.body.id = isNaN(parseInt(id)) ? null : parseInt(id);
         }
@@ -44,6 +45,7 @@ function Dataconversion(req, res, next) {
                 ? null
                 : parseInt(subcategoryid);
         }
+        // uploading image
         let image = (_a = req.files) === null || _a === void 0 ? void 0 : _a.image;
         let image_url = yield (0, imageurl_1.default)(image);
         req.body.image = image_url;

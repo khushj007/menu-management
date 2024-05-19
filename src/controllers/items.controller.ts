@@ -21,12 +21,15 @@ interface Body {
   subcategoryid?: number;
   image?: string;
 }
+
+// get all items
 const getAllItems = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   const data = await prisma.item.findMany();
   response.message(true, "success", 200, data);
 });
 
+// get unique items
 const getItem = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   let { value }: Params = req.params;
@@ -123,6 +126,7 @@ const getBySubCategory = asyncHandler(async (req, res) => {
   }
 });
 
+// search item
 const SearchItem = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   const { query }: Body = req.body;
@@ -141,6 +145,8 @@ const SearchItem = asyncHandler(async (req, res) => {
     response.message(false, "fail provide valid input", 400, null);
   }
 });
+
+//update item
 
 const updateItem = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
@@ -225,6 +231,7 @@ const updateItem = asyncHandler(async (req, res) => {
   }
 });
 
+//create item
 const createItem = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   const {
@@ -296,6 +303,7 @@ const createItem = asyncHandler(async (req, res) => {
   }
 });
 
+//delete item
 const deleteItem = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   let { value }: Params = req.params;

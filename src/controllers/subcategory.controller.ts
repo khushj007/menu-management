@@ -16,12 +16,14 @@ interface Body {
   image?: string;
 }
 
+// get all subcategories
 const getAllSubCategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   const data = await prisma.subCategory.findMany();
   response.message(true, "success", 200, data);
 });
 
+// get unique subcategory
 const getSubCategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   let { value }: Params = req.params;
@@ -83,6 +85,7 @@ const getByCategory = asyncHandler(async (req, res) => {
   }
 });
 
+// update subcategory
 const updateSubCategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   const { id, old_name, name, description, tax, image }: Body = req.body;
@@ -135,6 +138,7 @@ const updateSubCategory = asyncHandler(async (req, res) => {
   }
 });
 
+// create subcategory
 const createSubCategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   const { name, description, tax, categoryid, image }: Body = req.body;
@@ -181,6 +185,7 @@ const createSubCategory = asyncHandler(async (req, res) => {
   }
 });
 
+// delete subcategory
 const deleteSubcategory = asyncHandler(async (req, res) => {
   const response = new ApiResponse(res);
   let { value }: Params = req.params;

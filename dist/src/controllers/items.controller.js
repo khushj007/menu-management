@@ -16,12 +16,14 @@ exports.deleteItem = exports.createItem = exports.updateItem = exports.SearchIte
 const asyncHandler_1 = __importDefault(require("../utils/asyncHandler"));
 const apiResponse_1 = __importDefault(require("../utils/apiResponse"));
 const prismaClient_1 = __importDefault(require("../prismaClient/prismaClient"));
+// get all items
 const getAllItems = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const data = yield prismaClient_1.default.item.findMany();
     response.message(true, "success", 200, data);
 }));
 exports.getAllItems = getAllItems;
+// get unique items
 const getItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     let { value } = req.params;
@@ -115,6 +117,7 @@ const getBySubCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(voi
     }
 }));
 exports.getBySubCategory = getBySubCategory;
+// search item
 const SearchItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const { query } = req.body;
@@ -134,6 +137,7 @@ const SearchItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, v
     }
 }));
 exports.SearchItem = SearchItem;
+//update item
 const updateItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const { id, name, old_name, description, taxApplicable, tax, baseAmount, discount, image, } = req.body;
@@ -202,6 +206,7 @@ const updateItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, v
     }
 }));
 exports.updateItem = updateItem;
+//create item
 const createItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const { name, description, tax, categoryid, subcategoryid, discount, baseAmount, taxApplicable, image, } = req.body;
@@ -250,6 +255,7 @@ const createItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, v
     }
 }));
 exports.createItem = createItem;
+//delete item
 const deleteItem = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     let { value } = req.params;

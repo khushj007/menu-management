@@ -16,12 +16,14 @@ exports.deleteSubcategory = exports.createSubCategory = exports.updateSubCategor
 const asyncHandler_1 = __importDefault(require("../utils/asyncHandler"));
 const apiResponse_1 = __importDefault(require("../utils/apiResponse"));
 const prismaClient_1 = __importDefault(require("../prismaClient/prismaClient"));
+// get all subcategories
 const getAllSubCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const data = yield prismaClient_1.default.subCategory.findMany();
     response.message(true, "success", 200, data);
 }));
 exports.getAllSubCategory = getAllSubCategory;
+// get unique subcategory
 const getSubCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     let { value } = req.params;
@@ -81,6 +83,7 @@ const getByCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0
     }
 }));
 exports.getByCategory = getByCategory;
+// update subcategory
 const updateSubCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const { id, old_name, name, description, tax, image } = req.body;
@@ -133,6 +136,7 @@ const updateSubCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(vo
     }
 }));
 exports.updateSubCategory = updateSubCategory;
+// create subcategory
 const createSubCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     const { name, description, tax, categoryid, image } = req.body;
@@ -172,6 +176,7 @@ const createSubCategory = (0, asyncHandler_1.default)((req, res) => __awaiter(vo
     }
 }));
 exports.createSubCategory = createSubCategory;
+// delete subcategory
 const deleteSubcategory = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const response = new apiResponse_1.default(res);
     let { value } = req.params;

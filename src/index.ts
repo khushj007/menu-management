@@ -14,6 +14,7 @@ cloudinary.config({
 
 const app = express();
 
+//middlewares
 app.use(
   fileUpload({
     useTempFiles: true,

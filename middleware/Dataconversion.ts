@@ -20,6 +20,9 @@ async function Dataconversion(req: Request, res: Response, next: NextFunction) {
     subcategoryid,
     baseAmount,
   }: Body = req.body;
+
+  // converting the data into form described in database schema
+
   if (id) {
     req.body.id = isNaN(parseInt(id)) ? null : parseInt(id);
   }
@@ -52,6 +55,7 @@ async function Dataconversion(req: Request, res: Response, next: NextFunction) {
       : parseInt(subcategoryid);
   }
 
+  // uploading image
   let image: any = req.files?.image;
   let image_url = await imageurl(image);
   req.body.image = image_url;
